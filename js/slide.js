@@ -3,7 +3,7 @@ export class Slide {
 	constructor(slide, wrapper) {
 		this.slide = document.querySelector(slide);
 		this.wrapper = document.querySelector(wrapper);
-		this.dist = {finalPosition: 0, startX: 0, movement: 0};
+		this.dist = { finalPosition: 0, startX: 0, movement: 0 };
 		this.activeClass = "active";
 		this.changeEvent = new Event("changeEvent");
 	}
@@ -75,7 +75,7 @@ export class Slide {
 	}
 
 	slidesConfig() {
-		this.slideArray = [...this.slide.children].map(element => {
+		this.slideArray = [...this.slide.children].map((element) => {
 			const position = this.slidePosition(element);
 			return {
 				position,
@@ -103,7 +103,7 @@ export class Slide {
 	}
 
 	changeActiveClass() {
-		this.slideArray.forEach(item => item.element.classList.remove(this.activeClass));
+		this.slideArray.forEach((item) => item.element.classList.remove(this.activeClass));
 		this.slideArray[this.index.active].element.classList.add(this.activeClass);
 	}
 
@@ -145,7 +145,7 @@ export class Slide {
 	}
 }
 
-export class SlideNav extends Slide {
+export default class SlideNav extends Slide {
 	constructor(slide, wrapper) {
 		super(slide, wrapper);
 		this.bindControlEvents();
@@ -173,7 +173,7 @@ export class SlideNav extends Slide {
 	}
 
 	eventControl(item, index) {
-		item.addEventListener("click", event => {
+		item.addEventListener("click", (event) => {
 			event.preventDefault();
 			this.changeSlides(index);
 		});
@@ -181,7 +181,7 @@ export class SlideNav extends Slide {
 	}
 
 	activeControlItem() {
-		this.controlArray.forEach(item => item.classList.remove(this.activeClass));
+		this.controlArray.forEach((item) => item.classList.remove(this.activeClass));
 		this.controlArray[this.index.active].classList.add(this.activeClass);
 	}
 
